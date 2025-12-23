@@ -1,16 +1,16 @@
 import * as React from "react"
 import Header from "../components/Header"
 
-const IndexPage = () => {
+const ContactPage = () => {
   return (
     <>
       <Header />
       <main style={{ padding: "2rem" }}>
-        <h1>Welcome to Gatsby POC</h1>
-        <p>This is the home page of the Gatsby Proof of Concept.</p>
+        <h1>Contact</h1>
+        <p>Email: contact@hexadecimalsoftware.com</p>
       </main>
     </>
   )
 }
 
-export default IndexPage
+export default ContactPage
