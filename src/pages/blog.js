@@ -1,38 +1,53 @@
 import * as React from "react"
-import { graphql } from "gatsby"
-import Header from "../components/Header"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { StaticImage } from "gatsby-plugin-image"
 
-const BlogPage = ({ data }) => {
+const BlogPage = () => {
   return (
-    <>
-      <Header />
-      <main style={{ padding: "2rem" }}>
-        <h1>Blog Posts</h1>
+    <Layout>
+      <SEO
+        title="Blog"
+        description="Blog posts from Hexadecimal Gatsby POC project developed during internship"
+      />
 
-        {data.allMdx.nodes.map(node => (
-          <article key={node.frontmatter.title} style={{ marginBottom: "2rem" }}>
-            <h2>{node.frontmatter.title}</h2>
-            <p>{node.frontmatter.date}</p>
-            <p>{node.body}</p>
-          </article>
-        ))}
-      </main>
-    </>
+      <h1>Blog Posts</h1>
+
+      <div>
+        <h2>My First Blog Post</h2>
+        <p>2025-12-22</p>
+        <p>
+          This is my first <strong>Gatsby POC</strong> blog post for Hexadecimal
+          Software.
+        </p>
+
+        <StaticImage
+          src="../images/blog1.jpg"
+          alt="First Blog Image"
+          placeholder="blurred"
+          layout="constrained"
+          width={600}
+        />
+      </div>
+
+      <div style={{ marginTop: "2rem" }}>
+        <h2>Second Blog Post</h2>
+        <p>2025-12-23</p>
+        <p>
+          This is my second <strong>Gatsby POC</strong> blog post for Hexadecimal
+          Software.
+        </p>
+
+        <StaticImage
+          src="../images/blog2.jpg"
+          alt="Second Blog Image"
+          placeholder="blurred"
+          layout="constrained"
+          width={600}
+        />
+      </div>
+    </Layout>
   )
 }
-
-export const query = graphql`
-  {
-    allMdx(sort: { frontmatter: { date: DESC } }) {
-      nodes {
-        frontmatter {
-          title
-          date
-        }
-        body
-      }
-    }
-  }
-`
 
 export default BlogPage

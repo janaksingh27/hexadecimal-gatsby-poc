@@ -7,6 +7,7 @@
 
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"    // <-- SEO support
 
 import Header from "./Header"
 import "./layout.css"
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          description
         }
       }
     }
@@ -24,7 +26,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      {/* SEO Meta Tags */}
+      <Helmet>
+        <title>{data.site.siteMetadata?.title || `Hexadecimal Gatsby Blog`}</title>
+        <meta
+          name="description"
+          content={
+            data.site.siteMetadata?.description ||
+            "Gatsby POC blog for Hexadecimal Software internship"
+          }
+        />
+      </Helmet>
+
+      {/* Header */}
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+
+      {/* Main Content */}
       <div
         style={{
           margin: `0 auto`,
@@ -33,14 +50,15 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
+
+        {/* Footer */}
         <footer
           style={{
             marginTop: `var(--space-5)`,
             fontSize: `var(--font-sm)`,
           }}
         >
-          © {new Date().getFullYear()} &middot; Built with
-          {` `}
+          © {new Date().getFullYear()} &middot; Built with{" "}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
         </footer>
       </div>

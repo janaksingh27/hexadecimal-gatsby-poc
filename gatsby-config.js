@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Hexadecimal Gatsby POC`,
+    description: `Proof of Concept Gatsby website built during internship at Hexadecimal Software Pvt Ltd.`,
+    author: `Janak Singh`,
+    siteUrl: `https://hexadecimal-gatsby-poc.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,
